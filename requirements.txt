@@ -1,6 +1,7 @@
 pandas
 yfinance
-pykalman
+sklearn
 numpy
 plotly
 scipy
+matplotlib
