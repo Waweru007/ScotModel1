@@ -163,7 +163,7 @@ day_pred=np.arange(101,102)
 predictions=pd.DataFrame(scaler.inverse_transform(lst_output))
 predictions.columns=['Close']
 predictions['Date'] = pd.date_range(start='9/18/2022', periods=len(predictions), freq='D')
-predictions
+# predictions
 
 
 # In[98]:
