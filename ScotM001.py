@@ -181,7 +181,7 @@ df4=df3.reset_index()
 
 
 import plotly.express as px
-fig = px.line(df4, x="Date", y="Close",width=1200, height=1200)
+fig = px.line(df4, x="Date", y="Close",width=800, height=1200)
 fig.show()
 
 # st.plotly_chart(fig)
