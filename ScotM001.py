@@ -189,7 +189,14 @@ st.plotly_chart(fig, use_container_width=True)
 
 
 # In[ ]:
+import plotly.express as px
+for template in ["plotly", "plotly_white", "plotly_dark", "ggplot2", "seaborn", "simple_white", "none"]:
+    fig = px.line(df4, x='Date',y=df4['Close'],template=template , title="The price of the Asset Against time", ) 
+#     fig.add_scatter(x=df['Date'], y=df['High'],line=dict(color="BLACK", width=2))
+#     fig.update_xaxes(rangebreaks=[dict(bounds=["sat", "mon"]),dict(bounds=[16, 9], pattern="hour")])
+fig2.show()
 
+st.plotly_chart(fig2, use_container_width=True)
 
 
 
