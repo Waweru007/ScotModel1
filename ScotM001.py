@@ -184,7 +184,8 @@ import plotly.express as px
 fig = px.line(df4, x="Date", y="Close")
 fig.show()
 
-st.plotly_chart(fig, use_container_width=True)
+st.plotly_chart(fig)
+# st.plotly_chart(fig, use_container_width=True)
 
 
 # In[ ]:
