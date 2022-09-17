@@ -165,7 +165,7 @@ day_pred=np.arange(101,102)
 predictions=pd.DataFrame(scaler.inverse_transform(lst_output))
 predictions.columns=['Close']
 predictions['Date'] = pd.date_range(start='9/18/2022', periods=len(predictions), freq='D')
-# predictions
+predictions
 
 
 # In[98]:
@@ -181,11 +181,11 @@ df4=df3.reset_index()
 
 
 import plotly.express as px
-fig = px.line(df4, x="Date", y="Close")
+fig = px.line(df4, x="Date", y="Close",width=1200, height=800)
 fig.show()
 
-st.plotly_chart(fig)
-# st.plotly_chart(fig, use_container_width=True)
+# st.plotly_chart(fig)
+st.plotly_chart(fig, use_container_width=True)
 
 
 # In[ ]:
