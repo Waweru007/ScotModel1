@@ -12,6 +12,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import yfinance as yf
+import streamlit as st
 plt.style.use('bmh')
 ###Fetching the Data
 
@@ -181,6 +182,8 @@ df4=df3.reset_index()
 import plotly.express as px
 fig = px.line(df4, x="Date", y="Close")
 fig.show()
+
+st.plotly_chart(fig, use_container_width=True)
 
 
 # In[ ]:
