@@ -1,10 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[79]:
-
-
-#Install the dependencies
 import numpy as np
 import pandas as pd
 from sklearn.tree import DecisionTreeRegressor
@@ -13,20 +6,14 @@ from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import yfinance as yf
 import streamlit as st
-st.header("CARDANO PRICE MODELING")
+# st.header("BTC PRICE MODELING")
 plt.style.use('bmh')
 ###Fetching the Data
 
+tickers= ['FORT20622-USD']
+df=yf.download(tickers,start="2023-1-1", end='2024-12-31')
+df1=df['Low']
 
-# In[ ]:
-
-
-
-#############ModelOne###
-###Fetching the Data
-tickers= ['ADA-USD']
-df=yf.download(tickers,start="2021-1-1", end='2022-12-31')
-df1=df['Close']
 
 ########2
 import numpy as np
@@ -49,6 +36,8 @@ def create_dataset(dataset, time_step=1):
 		dataX.append(a)
 		dataY.append(dataset[i + time_step, 0])
 	return numpy.array(dataX), numpy.array(dataY)
+
+
 
 # reshape1 
 time_step = 100
@@ -114,13 +103,16 @@ plt.plot(trainPredictPlot)
 plt.plot(testPredictPlot)
 plt.show()
 
+
 #########6
 x_input=test_data[(len(test_data)-100):].reshape(1,-1)
 temp_input=list(x_input)
 temp_input=temp_input[0].tolist()
 
+
 # demonstrate prediction for next 5 days
 from numpy import array
+
 
 lst_output=[]
 n_steps=100
@@ -153,31 +145,33 @@ while(i<2):
 
 print(lst_output)
 
+
 ######7
 day_new=np.arange(1,101)
 day_pred=np.arange(101,102)
 
 
-# In[97]:
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+date_now = datetime.now().date()
+start_date = date_now + relativedelta(days=+1)
 
 
 ##See all the predictions
 predictions=pd.DataFrame(scaler.inverse_transform(lst_output))
 predictions.columns=['Close']
-predictions['Date'] = pd.date_range(start='9/18/2022', periods=len(predictions), freq='D')
+predictions['Date'] = pd.date_range(start=start_date, periods=len(predictions), freq='D')
 predictions
-
-
-# In[98]:
 
 
 df=df.reset_index()
 df2=df[['Date', 'Close']]
-df3 = df.append(predictions, ignore_index = True)
+# df3 = df.append(predictions, ignore_index = True)
+df3 = pd.concat([df, predictions], ignore_index=True)
 df4=df3.reset_index()
 
+df4.tail(10)
 
-# In[99]:
 
 
 import plotly.express as px
@@ -186,12 +180,4 @@ fig.show()
 
 st.plotly_chart(fig)
 st.plotly_chart(fig, use_container_width=False)
-
-
-
-
-# In[ ]:
-
-
-
 
