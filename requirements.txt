@@ -1,6 +1,6 @@
 pandas
 yfinance
-sklearn
+scikit-learn
 numpy
 plotly
 scipy
