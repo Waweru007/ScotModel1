@@ -1,8 +1,8 @@
 import numpy as np
 import pandas as pd
-from scikit-learn.tree import DecisionTreeRegressor
-from scikit-learn.linear_model import LinearRegression
-from scikit-learn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import yfinance as yf
 import streamlit as st
@@ -17,7 +17,7 @@ df1=df['Low']
 
 ########2
 import numpy as np
-from scikit-learn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler
 scaler=MinMaxScaler(feature_range=(0,1))
 df1=scaler.fit_transform(np.array(df1).reshape(-1,1))
 
@@ -77,7 +77,7 @@ test_predict=scaler.inverse_transform(test_predict)
 #####4
 ### Calculate RMSE performance metrics
 import math
-from scikit-learn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error
 BacktestError=math.sqrt(mean_squared_error(y_train,train_predict))
 BacktestError
 len(train_predict)
@@ -180,4 +180,3 @@ fig.show()
 
 st.plotly_chart(fig)
 st.plotly_chart(fig, use_container_width=False)
-
